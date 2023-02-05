@@ -35,7 +35,6 @@ var elems = {
     { data: { source: '4', target: '4A' } },
     { data: { source: '4', target: '4B' } },
     { data: { source: '4', target: '4C' } },
-    { data: { source: '4', target: '1' } },
   ]
 };
 
@@ -63,7 +62,7 @@ var cy = cytoscape({
   ],
   elements: elems,
   layout: {
-        name: 'random',
+        name: 'breadthfirst',
         directed: true,
         padding: 10
   }
