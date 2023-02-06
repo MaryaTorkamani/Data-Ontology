@@ -38,6 +38,18 @@ var elems = {
   ]
 };
 
+function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
+
+
+
 var childrenData = new Map(); //holds nodes' children info for restoration
 
 var cy = cytoscape({
@@ -92,8 +104,23 @@ childrenData.get(nodes[0].data.id).removed = false;
 
 //removes and restores nodes' children on click
 cy.on('tap', 'node', function(){
-  var nodes = this;
-  var id = nodes.data('id')
+
+   var nodes = this;
+   var id = nodes.data('id')
+
+//caption on node
+    const div = document.getElementById('CP');
+	if (id== '1') {
+		  div.textContent = "the first ...:"+id;
+		div.style.color = getRandomColor();
+	} else if (id== '2') {
+		 div.textContent = "the second...:"+id;
+		div.style.color = getRandomColor();
+	} else {
+	  div.textContent ="";
+	}
+
+
   //if the node's children have been removed
   if (childrenData.get(id).removed == true){
     //restore the nodes and edges stored there
